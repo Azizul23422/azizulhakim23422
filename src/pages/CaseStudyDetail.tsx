@@ -80,7 +80,15 @@ const CaseStudyDetail = () => {
             {...fadeInUp}
             className="aspect-[21/9] rounded-lg bg-muted overflow-hidden"
           >
-            <div className="w-full h-full bg-gradient-to-br from-muted to-accent" />
+            {study.image ? (
+              <img 
+                src={study.image} 
+                alt={study.title}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="w-full h-full bg-gradient-to-br from-muted to-accent" />
+            )}
           </motion.div>
         </div>
       </section>
