@@ -1,3 +1,7 @@
+import fintechImage from "@/assets/case-study-fintech.jpg";
+import saasImage from "@/assets/case-study-saas.jpg";
+import healthcareImage from "@/assets/case-study-healthcare.jpg";
+
 export const caseStudies = [
   {
     id: "fintech-mobile-app",
@@ -5,6 +9,7 @@ export const caseStudies = [
     subtitle: "Designing an intuitive mobile banking experience that reduced user friction by 40% and increased daily active users.",
     role: "Lead Product Designer",
     year: "2024",
+    image: fintechImage,
     client: "FinFlow",
     duration: "6 months",
     team: "1 Designer, 2 Engineers, 1 PM",
@@ -45,6 +50,7 @@ export const caseStudies = [
     subtitle: "Transforming a complex data platform into an accessible tool that empowered non-technical users to make data-driven decisions.",
     role: "Senior UX Designer",
     year: "2023",
+    image: saasImage,
     client: "DataViz Pro",
     duration: "8 months",
     team: "2 Designers, 4 Engineers, 1 Data Scientist",
@@ -85,6 +91,7 @@ export const caseStudies = [
     subtitle: "Creating an accessible health management platform that bridges the gap between patients and healthcare providers.",
     role: "UX Design Lead",
     year: "2023",
+    image: healthcareImage,
     client: "MedConnect",
     duration: "10 months",
     team: "3 Designers, 5 Engineers, 2 Healthcare Consultants",

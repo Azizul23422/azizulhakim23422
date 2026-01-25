@@ -8,6 +8,7 @@ interface CaseStudyCardProps {
   subtitle: string;
   role: string;
   year: string;
+  image?: string;
   index?: number;
 }
 
@@ -17,6 +18,7 @@ export const CaseStudyCard = ({
   subtitle,
   role,
   year,
+  image,
   index = 0,
 }: CaseStudyCardProps) => {
   return (
@@ -41,9 +43,17 @@ export const CaseStudyCard = ({
             <span className="text-xs text-text-tertiary">{year}</span>
           </div>
 
-          {/* Image placeholder */}
+          {/* Image */}
           <div className="aspect-[16/10] rounded-md bg-muted mb-6 overflow-hidden relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-muted to-accent opacity-50" />
+            {image ? (
+              <img 
+                src={image} 
+                alt={title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            ) : (
+              <div className="absolute inset-0 bg-gradient-to-br from-muted to-accent opacity-50" />
+            )}
             <motion.div
               className="absolute inset-0 bg-foreground/5"
               initial={{ opacity: 0 }}

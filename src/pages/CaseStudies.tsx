@@ -23,6 +23,7 @@ const CaseStudies = () => {
                 subtitle={study.subtitle}
                 role={study.role}
                 year={study.year}
+                image={study.image}
                 index={index}
               />
             ))}
