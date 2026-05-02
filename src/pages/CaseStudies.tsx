@@ -1,6 +1,7 @@
 import { PageTransition } from "@/components/layout/PageTransition";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { CaseStudyCard } from "@/components/ui/CaseStudyCard";
+import { MorphingText } from "@/components/ui/MorphingText";
 import { caseStudies } from "@/data/caseStudies";
 
 const CaseStudies = () => {
@@ -10,7 +11,11 @@ const CaseStudies = () => {
         <div className="container-wide">
           <SectionHeader
             caption="Selected Work"
-            title="Case Studies"
+            title={
+              <>
+                <MorphingText originalText="作品集" morphedText="Case Studies" delay={200} />
+              </>
+            }
             description="Deep dives into product design challenges. Each project explores the full journey from problem discovery to measurable outcomes."
           />
 
