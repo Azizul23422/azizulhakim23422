@@ -41,10 +41,10 @@ const Contact = () => {
               <div className="mb-12">
                 <span className="caption block mb-3">Email</span>
                 <a
-                  href="mailto:hello@azizulhakim.design"
+                  href="mailto:azizulhakim1549@gmail.com"
                   className="heading-sm link-subtle"
                 >
-                  hello@azizulhakim.design
+                  azizulhakim1549@gmail.com
                 </a>
               </div>
 
@@ -96,7 +96,7 @@ const Contact = () => {
 
                 <div className="space-y-4">
                   <a
-                    href="mailto:hello@azizulhakim.design"
+                    href="mailto:azizulhakim1549@gmail.com"
                     className="btn-primary w-full justify-center"
                   >
                     <Mail size={18} />
