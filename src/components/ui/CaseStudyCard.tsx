@@ -64,7 +64,7 @@ export const CaseStudyCard = ({
 
           {/* Content */}
           <div className="flex-1">
-            <h3 className="heading-md mb-3 group-hover:text-text-secondary transition-colors duration-300">
+            <h3 className="heading-sm mb-3 group-hover:text-text-secondary transition-colors duration-300">
               {title}
             </h3>
             <p className="body-sm line-clamp-2">
