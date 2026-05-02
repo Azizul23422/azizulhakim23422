@@ -37,7 +37,7 @@ const CaseStudyDetail = () => {
 
           <motion.div {...fadeInUp}>
             <span className="caption block mb-4">{study.role} — {study.year}</span>
-            <h1 className="heading-display mb-6">
+            <h1 className="heading-xl mb-6">
               <MorphingText
                 originalText="案例研究"
                 morphedText={study.title}
@@ -98,7 +98,7 @@ const CaseStudyDetail = () => {
         <div className="container-narrow">
           <motion.div {...fadeInUp}>
             <span className="caption block mb-4">The Challenge</span>
-            <h2 className="heading-lg mb-6">Problem Statement</h2>
+            <h2 className="heading-md mb-6">Problem Statement</h2>
             <p className="body-lg">{study.problem}</p>
           </motion.div>
         </div>
@@ -109,7 +109,7 @@ const CaseStudyDetail = () => {
         <div className="container-narrow">
           <motion.div {...fadeInUp}>
             <span className="caption block mb-4">Objectives</span>
-            <h2 className="heading-lg mb-8">Project Goals</h2>
+            <h2 className="heading-md mb-8">Project Goals</h2>
             <ul className="space-y-4">
               {study.goals.map((goal, index) => (
                 <motion.li
@@ -134,7 +134,7 @@ const CaseStudyDetail = () => {
         <div className="container-narrow">
           <motion.div {...fadeInUp}>
             <span className="caption block mb-4">Discovery</span>
-            <h2 className="heading-lg mb-8">Research & Insights</h2>
+            <h2 className="heading-md mb-8">Research & Insights</h2>
             <ul className="space-y-4">
               {study.research.map((item, index) => (
                 <motion.li
@@ -159,7 +159,7 @@ const CaseStudyDetail = () => {
         <div className="container-narrow">
           <motion.div {...fadeInUp}>
             <span className="caption block mb-4">User Problems</span>
-            <h2 className="heading-lg mb-8">Key Pain Points</h2>
+            <h2 className="heading-md mb-8">Key Pain Points</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {study.painPoints.map((point, index) => (
                 <motion.div
@@ -184,7 +184,7 @@ const CaseStudyDetail = () => {
         <div className="container-narrow">
           <motion.div {...fadeInUp}>
             <span className="caption block mb-4">Approach</span>
-            <h2 className="heading-lg mb-6">The Solution</h2>
+            <h2 className="heading-md mb-6">The Solution</h2>
             <p className="body-lg">{study.solution}</p>
           </motion.div>
         </div>
@@ -195,7 +195,7 @@ const CaseStudyDetail = () => {
         <div className="container-wide">
           <motion.div {...fadeInUp} className="text-center mb-12">
             <span className="caption block mb-4">Results</span>
-            <h2 className="heading-lg">Measurable Outcomes</h2>
+            <h2 className="heading-md">Measurable Outcomes</h2>
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -208,7 +208,7 @@ const CaseStudyDetail = () => {
                 transition={{ delay: index * 0.1 }}
                 className="text-center p-6 rounded-lg border border-border bg-card"
               >
-                <span className="heading-xl block mb-2">{outcome.metric}</span>
+                <span className="heading-lg block mb-2">{outcome.metric}</span>
                 <span className="body-sm">{outcome.label}</span>
               </motion.div>
             ))}
@@ -221,7 +221,7 @@ const CaseStudyDetail = () => {
         <div className="container-narrow">
           <motion.div {...fadeInUp}>
             <span className="caption block mb-4">Reflection</span>
-            <h2 className="heading-lg mb-8">Key Learnings</h2>
+            <h2 className="heading-md mb-8">Key Learnings</h2>
             <ul className="space-y-6">
               {study.learnings.map((learning, index) => (
                 <motion.li
@@ -252,7 +252,7 @@ const CaseStudyDetail = () => {
               to={`/case-studies/${nextStudy.id}`}
               className="group inline-block"
             >
-              <h2 className="heading-xl group-hover:text-text-secondary transition-colors duration-300">
+              <h2 className="heading-lg group-hover:text-text-secondary transition-colors duration-300">
                 {nextStudy.title}
               </h2>
               <span className="inline-flex items-center gap-2 mt-4 text-text-tertiary group-hover:text-foreground transition-colors">
