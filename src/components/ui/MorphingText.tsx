@@ -1,5 +1,5 @@
-import { useEffect, useState, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useEffect, useState, useRef, useCallback } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 
 interface MorphingTextProps {
   originalText: string;
@@ -8,6 +8,9 @@ interface MorphingTextProps {
   delay?: number;
 }
 
+// Characters used during the morph transition for a "decoding" feel
+const MORPH_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
 export const MorphingText = ({
   originalText,
   morphedText,
@@ -15,47 +18,67 @@ export const MorphingText = ({
   delay = 0,
 }: MorphingTextProps) => {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [displayText, setDisplayText] = useState(originalText);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const [displayChars, setDisplayChars] = useState<string[]>(originalText.split(""));
+  const [phase, setPhase] = useState<"original" | "scrambling" | "resolved">("original");
+  const animFrameRef = useRef<number>();
+
+  const scrambleAndResolve = useCallback(() => {
+    setPhase("scrambling");
+    const target = morphedText.split("");
+    const maxLen = Math.max(originalText.length, target.length);
+    const resolved = new Array(maxLen).fill(false);
+    const current = originalText.split("").concat(
+      new Array(Math.max(0, maxLen - originalText.length)).fill(" ")
+    );
+
+    let tick = 0;
+    const totalTicks = maxLen * 4 + 20;
+
+    const step = () => {
+      tick++;
+
+      // Progressively resolve characters from left to right
+      for (let i = 0; i < maxLen; i++) {
+        if (resolved[i]) continue;
+
+        const resolveAt = i * 3 + 8;
+        if (tick >= resolveAt) {
+          resolved[i] = true;
+          current[i] = target[i] || "";
+        } else if (tick > i * 2) {
+          // Scramble phase: random intermediate characters
+          current[i] = MORPH_CHARS[Math.floor(Math.random() * MORPH_CHARS.length)];
+        }
+      }
+
+      // Trim trailing empty strings
+      const trimmed = current.slice(0, target.length);
+      setDisplayChars([...trimmed]);
+
+      if (tick < totalTicks && !resolved.every(Boolean)) {
+        animFrameRef.current = requestAnimationFrame(step);
+      } else {
+        setDisplayChars(target);
+        setPhase("resolved");
+      }
+    };
+
+    animFrameRef.current = requestAnimationFrame(step);
+  }, [originalText, morphedText]);
 
   useEffect(() => {
     if (!isInView) return;
 
     const timer = setTimeout(() => {
-      setIsAnimating(true);
-      morphText();
-    }, delay + 500);
+      scrambleAndResolve();
+    }, delay + 400);
 
-    return () => clearTimeout(timer);
-  }, [isInView, delay]);
-
-  const morphText = () => {
-    const chars = morphedText.split("");
-    const originalChars = originalText.split("");
-    const maxLength = Math.max(chars.length, originalChars.length);
-
-    let currentIndex = 0;
-
-    const interval = setInterval(() => {
-      if (currentIndex >= maxLength) {
-        clearInterval(interval);
-        setDisplayText(morphedText);
-        setIsAnimating(false);
-        return;
-      }
-
-      setDisplayText((prev) => {
-        const prevChars = prev.split("");
-        if (currentIndex < chars.length) {
-          prevChars[currentIndex] = chars[currentIndex];
-        }
-        return prevChars.slice(0, Math.max(chars.length, currentIndex + 1)).join("");
-      });
-
-      currentIndex++;
-    }, 50);
-  };
+    return () => {
+      clearTimeout(timer);
+      if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
+    };
+  }, [isInView, delay, scrambleAndResolve]);
 
   return (
     <motion.span
@@ -63,19 +86,25 @@ export const MorphingText = ({
       className={`inline-block ${className}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: isInView ? 1 : 0 }}
-      transition={{ duration: 0.5, delay: delay / 1000 }}
+      transition={{ duration: 0.6, delay: delay / 1000 }}
+      aria-label={morphedText}
+      role="text"
     >
-      {displayText.split("").map((char, index) => (
-        <motion.span
-          key={`${index}-${char}`}
-          className="inline-block"
-          initial={isAnimating && index === displayText.length - 1 ? { opacity: 0, y: 10 } : {}}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.1 }}
-        >
-          {char === " " ? "\u00A0" : char}
-        </motion.span>
-      ))}
+      <AnimatePresence mode="popLayout">
+        {displayChars.map((char, index) => (
+          <motion.span
+            key={`${index}-${phase === "resolved" ? "final" : "morph"}`}
+            className="inline-block"
+            style={{
+              opacity: phase === "scrambling" && char !== morphedText[index] ? 0.6 : 1,
+              filter: phase === "scrambling" && char !== morphedText[index] ? "blur(0.5px)" : "none",
+              transition: "opacity 0.1s, filter 0.15s",
+            }}
+          >
+            {char === " " ? "\u00A0" : char}
+          </motion.span>
+        ))}
+      </AnimatePresence>
     </motion.span>
   );
 };

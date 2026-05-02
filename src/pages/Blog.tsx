@@ -1,6 +1,7 @@
 import { PageTransition } from "@/components/layout/PageTransition";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { BlogCard } from "@/components/ui/BlogCard";
+import { MorphingText } from "@/components/ui/MorphingText";
 import { blogPosts } from "@/data/blogPosts";
 
 const Blog = () => {
@@ -10,7 +11,11 @@ const Blog = () => {
         <div className="container-wide">
           <SectionHeader
             caption="Writing"
-            title="Thoughts on Design"
+            title={
+              <>
+                <MorphingText originalText="设计思考" morphedText="Thoughts on Design" delay={200} />
+              </>
+            }
             description="Essays exploring UX thinking, design systems, process breakdowns, and reflections on the craft of building digital products."
           />
 
