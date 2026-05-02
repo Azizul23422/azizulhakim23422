@@ -25,7 +25,7 @@ export const SectionHeader = ({
       {caption && (
         <span className="caption block mb-4">{caption}</span>
       )}
-      <h2 className="heading-xl mb-4">
+      <h2 className="heading-lg mb-4">
         {title}
       </h2>
       {description && (
