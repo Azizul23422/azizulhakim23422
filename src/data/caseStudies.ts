@@ -42,7 +42,8 @@ export const caseStudies = [
       "Trust indicators are crucial in fintech — small visual cues significantly impact user confidence",
       "Progressive disclosure works better than hiding complexity",
       "Micro-interactions during loading states reduce perceived wait time"
-    ]
+    ],
+    projectUrl: "https://finflow-app.example.com"
   },
   {
     id: "saas-dashboard",
@@ -83,7 +84,8 @@ export const caseStudies = [
       "AI assistance should augment, not replace, user decision-making",
       "Templates are the gateway drug to advanced features",
       "Investing in empty states pays dividends in user activation"
-    ]
+    ],
+    projectUrl: "https://dataviz-pro.example.com"
   },
   {
     id: "healthcare-platform",
@@ -124,6 +126,7 @@ export const caseStudies = [
       "Healthcare UX requires extensive domain knowledge and expert collaboration",
       "Accessibility improvements benefit all users, not just those with disabilities",
       "Trust and privacy concerns require transparent communication"
-    ]
+    ],
+    projectUrl: "https://medconnect-portal.example.com"
   }
 ];
