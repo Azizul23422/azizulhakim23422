@@ -74,7 +74,7 @@ const About = () => {
               className="lg:col-span-5"
             >
               <div className="aspect-[4/5] rounded-lg bg-muted overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-br from-muted to-accent" />
+                <img src={azizPhoto} alt="Azizul Hakim working at his desk" className="w-full h-full object-cover" />
               </div>
             </motion.div>
           </div>
