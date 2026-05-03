@@ -113,6 +113,7 @@ const Index = () => {
                 role={study.role}
                 year={study.year}
                 image={study.image}
+                projectUrl={study.projectUrl}
                 index={index}
               />
             ))}

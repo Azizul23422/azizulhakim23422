@@ -1,6 +1,6 @@
 import { useParams, Link, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { MorphingText } from "@/components/ui/MorphingText";
 import { caseStudies } from "@/data/caseStudies";
@@ -45,6 +45,17 @@ const CaseStudyDetail = () => {
               />
             </h1>
             <p className="body-lg max-w-3xl">{study.subtitle}</p>
+            {study.projectUrl && (
+              <a
+                href={study.projectUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 text-sm font-medium text-foreground border border-border rounded-md hover:bg-accent transition-colors duration-300"
+              >
+                Open live project
+                <ExternalLink size={16} />
+              </a>
+            )}
           </motion.div>
 
           {/* Meta */}
