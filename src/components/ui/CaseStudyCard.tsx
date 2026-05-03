@@ -74,16 +74,24 @@ export const CaseStudyCard = ({
             </p>
           </div>
 
-          {/* Arrow */}
-          <div className="mt-6 flex items-center gap-2 text-text-tertiary group-hover:text-foreground transition-colors duration-300">
-            <span className="text-sm font-medium">View case study</span>
-            <motion.div
-              initial={{ x: 0, y: 0 }}
-              whileHover={{ x: 4, y: -4 }}
-              transition={{ duration: 0.2 }}
-            >
+          {/* Actions */}
+          <div className="mt-6 flex items-center justify-between">
+            <div className="flex items-center gap-2 text-text-tertiary group-hover:text-foreground transition-colors duration-300">
+              <span className="text-sm font-medium">View case study</span>
               <ArrowUpRight size={16} />
-            </motion.div>
+            </div>
+            {projectUrl && (
+              <a
+                href={projectUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-text-tertiary hover:text-foreground transition-colors duration-300"
+              >
+                Open project
+                <ExternalLink size={14} />
+              </a>
+            )}
           </div>
         </article>
       </Link>
