@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import azizPhoto from "@/assets/aziz-photo.jpg";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { MorphingText } from "@/components/ui/MorphingText";
 import { Link } from "react-router-dom";
@@ -73,7 +74,7 @@ const About = () => {
               className="lg:col-span-5"
             >
               <div className="aspect-[4/5] rounded-lg bg-muted overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-br from-muted to-accent" />
+                <img src={azizPhoto} alt="Azizul Hakim working at his desk" className="w-full h-full object-cover" />
               </div>
             </motion.div>
           </div>
