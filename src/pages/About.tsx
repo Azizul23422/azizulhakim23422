@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import azizPhoto from "@/assets/aziz-photo.jpg";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { MorphingText } from "@/components/ui/MorphingText";
 import { Link } from "react-router-dom";
