@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 
 interface CaseStudyCardProps {
   id: string;
@@ -9,6 +9,7 @@ interface CaseStudyCardProps {
   role: string;
   year: string;
   image?: string;
+  projectUrl?: string;
   index?: number;
 }
 
@@ -19,6 +20,7 @@ export const CaseStudyCard = ({
   role,
   year,
   image,
+  projectUrl,
   index = 0,
 }: CaseStudyCardProps) => {
   return (
