@@ -1,6 +1,6 @@
 import { useParams, Link, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { MorphingText } from "@/components/ui/MorphingText";
 import { caseStudies } from "@/data/caseStudies";
