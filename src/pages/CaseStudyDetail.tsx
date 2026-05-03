@@ -45,6 +45,17 @@ const CaseStudyDetail = () => {
               />
             </h1>
             <p className="body-lg max-w-3xl">{study.subtitle}</p>
+            {study.projectUrl && (
+              <a
+                href={study.projectUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 text-sm font-medium text-foreground border border-border rounded-md hover:bg-accent transition-colors duration-300"
+              >
+                Open live project
+                <ExternalLink size={16} />
+              </a>
+            )}
           </motion.div>
 
           {/* Meta */}
