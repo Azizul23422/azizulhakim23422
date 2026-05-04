@@ -52,18 +52,18 @@ const About = () => {
                 <span className="block">I'm Azizul.</span>
               </h1>
               <p className="body-lg mb-6">
-                I'm a product-focused UI/UX designer based in Dhaka, Bangladesh. 
+                I'm a Google certified product-focused UI/UX designer based in Dhaka, Bangladesh. 
                 I specialize in creating digital experiences that balance aesthetics 
                 with meaningful functionality.
               </p>
               <p className="body-md mb-6">
-                With over 5 years of experience working with startups and established 
+                With over 2 years of experience working with startups and established 
                 companies, I've developed a deep appreciation for the intersection of 
-                design, technology, and human behavior.
+                design, technology and human behavior.
               </p>
               <p className="body-md">
                 My approach is rooted in empathy and research. I believe that great 
-                design is invisible — it feels natural, intuitive, and serves the 
+                design is invisible — it feels natural, intuitive and serves the 
                 user's needs without drawing attention to itself.
               </p>
             </motion.div>
